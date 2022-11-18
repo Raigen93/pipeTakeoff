@@ -1,0 +1,52 @@
+html {
+    background-color: rgba(244, 200, 150, 0.8);
+}
+
+body {
+    width: 75%;
+    background-color: antiquewhite;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    width: 150px;
+}
+
+form {
+    border: 2px dashed black;
+    width: 150px;
+}
+
+input {
+    margin: 5px auto 5px 10px;
+}
+
+.inputs {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.container {
+    margin: 15px auto;
+}
+
+.group {
+    flex-basis: 40%;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.rise_run {
+    display: flex;
+    flex-direction: column;
+}
+
+#diagram {
+    height: auto;
+    width: 100%;
+}

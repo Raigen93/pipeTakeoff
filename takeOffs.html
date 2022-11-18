@@ -2,62 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
-    <style>
-        html {
-            background-color: rgba(244, 200, 150, 0.8);
-        }
-
-        body {
-            width: 75%;
-            background-color: antiquewhite;
-            margin: 15px auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        button {
-            width: 150px;
-        }
-
-        form {
-            border: 2px dashed black;
-            width: 150px;
-        }
-
-        input {
-            margin: 5px auto 5px 10px;
-        }
-
-        .inputs {
-            display: flex;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
-        }
-
-        .container {
-            margin: 15px auto;
-        }
-
-        .group {
-            flex-basis: 40%;
-            flex-direction: column;
-            margin: 10px;
-        }
-
-        .rise_run {
-            display: flex;
-            flex-direction: column;
-        }
-
-        #diagram {
-            height: auto;
-            width: 100%;
-        }
-    </style>
+    <title>Pipe Take Offs</title>
+    <link rel="stylesheet" href="index.css" />
 </head>
 <body>
 <section>
@@ -125,69 +71,6 @@
         </div>
     </div>
 </section>
-<script>
-    let submitButton = document.getElementById("submit");
-    let calcButton = document.getElementById("calcRiseRun");
-    let output = document.getElementById("result");
-    let ninety = document.getElementById("90");
-    let forty_five = document.getElementById("45");
-    let degree;
-
-
-    function calcElbowOut() {
-        let nomSize = parseFloat(document.getElementById("nomSize").value);
-
-        if(ninety.checked) {
-            degree = 90;
-        } else if(forty_five.checked) {
-            degree = 45;
-        }
-
-        if(degree === 90) {
-           calcNinety(nomSize);
-        } else if(degree === 45) {
-           output.innerHTML = calc45(nomSize).toString();
-        }
-    }
-
-    function calcNinety(nomSize) {
-        output.innerHTML = (nomSize * 1.5).toString();
-    }
-
-    function calc45(nomSize) {
-        let num2 = nomSize / 2;
-        let num3 = num2 / 2;
-        let num4 = num3 / 2;
-        return num2 + num4;
-    }
-
-    let height;
-    function calcRiseRun() {
-        let nomSize = parseFloat(document.getElementById("pipeSize").value);
-        let elev1 = parseFloat(document.getElementById("elevation_1").value);
-        let elev2 = parseFloat(document.getElementById("elevation_2").value);
-
-        if(elev2 > elev1) {
-           height = elev2 - elev1;
-        } else {
-            height = elev1 - elev2;
-        }
-
-        let a = Math.pow(height, 2);
-        let c = a + a;
-        let overall = Math.sqrt(c);
-        overall = parseFloat(overall.toFixed(2));
-
-        document.getElementById('overall_length').innerHTML = (overall).toString();
-
-        let takeOut = calc45(nomSize) * 2;
-        let pieceLength = overall - (takeOut + 0.25);
-
-        document.getElementById('pieceLength').innerHTML = pieceLength.toString();
-    }
-
-    calcButton.addEventListener('click', calcRiseRun);
-    submitButton.addEventListener('click', calcElbowOut);
-</script>
+<script src="logic.js"></script>
 </body>
 </html>
