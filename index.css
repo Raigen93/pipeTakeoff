@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    width: 75%;
+    width: 80%;
     background-color: antiquewhite;
     margin: 15px auto;
     display: flex;
@@ -15,18 +15,24 @@ body {
 
 button {
     width: 150px;
+    text-align: center;
 }
 
 form {
     border: 2px dashed black;
     width: 150px;
+    padding: 10px;
+    margin: 5px;
 }
 
 input {
-    margin: 5px auto 5px 10px;
+    margin: 5px;
 }
 
-
+section {
+    animation: fadeIn 0.75s;
+    width: 99%;
+}
 
 .container {
     margin: 15px auto;
@@ -61,6 +67,7 @@ input {
 }
 
 .selectButtons {
+    display: flex;
     margin: 15px;
 }
 
@@ -74,4 +81,13 @@ input {
 
 #runs {
     display: none;
+}
+
+#calcElbows {
+    display: none;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }

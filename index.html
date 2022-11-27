@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content= "height=device-height, initial-scale=0.75">
+    <meta name="viewport" content= "height=device-height, initial-scale=0.8">
     <title>Pipe Take Offs</title>
     <link rel="stylesheet" href="index.css" />
 </head>
@@ -10,19 +10,26 @@
 
     <p>Please note, this program currently functions only off of whole inches with decimals instead of fractions</p>
 
-    <div>
-    <button class="selectButtons" id="calcElbows"> Calculate Elbows </button>
-    <button class="selectButtons" id="calcRuns"> Calculate Runs </button>
-    <button class="selectButtons" id="calcRiseRuns" > Calculate Rise-Runs </button>
+    <div class="selectButtons">
+        <div class="sButton">
+            <button  id="calcElbows"> Calculate Elbows </button>
+        </div>
+        <div class="sButton">
+            <button  id="calcRuns"> Calculate Runs </button>
+        </div>
+        <div class="sButton">
+            <button  id="calcRiseRuns" > Calculate Rise-Runs </button>
+        </div>
+
     </div>
+
     <section id="elbows">
         <h2>Calculate take-offs for Elbows</h2>
-<div>
+        <div>
     <form>
     <div>
-
-            <input type="radio" id="90" name="degrees" value="90">
-            <label for="90">90 degrees</label>
+        <input type="radio" id="90" name="degrees" value="90">
+        <label for="90">90 degrees</label>
     </div>
 
     <div>
@@ -30,13 +37,17 @@
         <label for="45">45 degrees</label>
     </div>
     </form>
+            <div>
+                <label for="nomSize">Nominal Size of Pipe</label>
+                <input type="number" id="nomSize">
+            </div>
+   <div>
+       <button id="submit">
+           Calculate
+       </button>
+       <span class="response" id="result"></span>
+   </div>
 
-    <label for="nomSize">Nominal Size of Pipe</label>
-    <input type="number" id="nomSize">
-    <button id="submit">
-        Calculate
-    </button>
-    <span class="response" id="result"></span>
 </div>
 </section>
 
@@ -129,7 +140,8 @@
             <div>
                 <label for="runNom">Nominal Size:</label>
                 <input type="number" id="runNom">
-
+            </div>
+            <div>
                 <label for="runOverall">Overall Length:</label>
                 <input type="number" id="runOverall">
             </div>

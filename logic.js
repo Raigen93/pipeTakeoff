@@ -1611,18 +1611,30 @@ function disElbow() {
     elbowCalc.style.display = "block";
     riseRuns.style.display = "none";
     runs.style.display = "none";
+
+    displayElbow.style.display = "none";
+    displayRun.style.display = "block";
+    displayRiseRun.style.display = "block";
 }
 
 function disRiseRun() {
     elbowCalc.style.display = "none";
     riseRuns.style.display = "block";
     runs.style.display = "none";
+
+    displayElbow.style.display = "block";
+    displayRun.style.display = "block";
+    displayRiseRun.style.display = "none";
 }
 
 function disRun(){
     elbowCalc.style.display = "none";
     riseRuns.style.display = "none";
     runs.style.display = "block";
+
+    displayElbow.style.display = "block";
+    displayRun.style.display = "none";
+    displayRiseRun.style.display = "block";
 }
 
 calcRun.addEventListener('click', calcRuns);
