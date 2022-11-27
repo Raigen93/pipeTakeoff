@@ -6,9 +6,13 @@
     <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-<section>
+
     <p>Please note, this program currently functions only off of whole inches with decimals instead of fractions</p>
-<h2>Calculate take-offs for Elbows</h2>
+
+    <button id="cycle">Change Calculator</button>
+
+    <section id="elbows">
+        <h2>Calculate take-offs for Elbows</h2>
 <div>
     <form>
     <div>
@@ -24,8 +28,7 @@
     </form>
 
     <label for="nomSize">Nominal Size of Pipe</label>
-    <textarea id="nomSize">
-   </textarea>
+    <input type="number" id="nomSize">
     <button id="submit">
         Calculate
     </button>
@@ -33,7 +36,8 @@
    </span>
 </div>
 </section>
-<section>
+
+<section id="rise_runs">
 <h2>Calculate take-offs for rise-runs</h2>
 <h4>Calculator assumes 1/8" gaps for weld joints</h4>
 
@@ -41,17 +45,17 @@
         <div class="inputs">
             <span class="group">
                 <label for="pipeSize">Nominal Size of Pipe</label>
-                <textarea id="pipeSize"></textarea>
+                <input type="number" id="pipeSize">
             </span>
 
             <span class="group">
                 <label for="elevation_1">Upper Elevation</label>
-                <textarea id="elevation_1"></textarea>
+                <input type="number" id="elevation_1">
             </span>
 
             <span class="group">
                 <label for="elevation_2">Lower Elevation</label>
-                <textarea id="elevation_2"></textarea>
+                <input type="number" id="elevation_2">
             </span>
 
         </div>
@@ -67,10 +71,70 @@
         </div>
 
         <div class="container">
-            <img id="diagram" src="PipeDiagram.png" />
+            <img class="diagram" src="PipeDiagram.png" />
         </div>
     </div>
 </section>
+
+
+    <section>
+        <h2>Calculate Runs</h2>
+        <h4>Gaps for Weldments are assumed to be 1/8"</h4>
+
+        <div>
+            <label for="fitClass">Fitting Class:</label>
+            <select id="fitClass" name="fitClass">
+                <option class="fit_class" value="none"></option>
+                <option class="fit_class" value="150">150</option>
+                <option class="fit_class" value="300">300</option>
+                <option class="fit_class" value="400">400</option>
+                <option class="fit_class" value="600">600</option>
+                <option class="fit_class" value="900">900</option>
+                <option class="fit_class" value="1500">1500</option>
+                <option class="fit_class" value="2500">2500</option>
+            </select>
+
+        </div>
+
+        <div>
+            <div id="fitting1">
+            <label for="pick1">Pipe Fitting 1:</label>
+            <select id="pick1" name="pick_1">
+                <option class="pick1" value="none">No fitting</option>
+                <option class="pick1" value="weldNeckRF">Weld neck, Raised Face</option>
+                <option class="pick1" value="weldNeckFF">Weld neck, Flat Face</option>
+                <option class="pick1" value="90">Elbow, 90 degrees</option>
+                <option class="pick1" value="45">Elbow, 45 degrees</option>
+
+            </select>
+            </div>
+            <div id="fitting2">
+                <label for="pick2">Pipe Fitting 2:</label>
+                <select id="pick2" name="pick_2">
+                    <option class="pick2" value="none">No fitting</option>
+                    <option class="pick2" value="weldNeckRF">Weld neck, Raised Face</option>
+                    <option class="pick2" value="weldNeckFF">Weld neck, Flat Face</option>
+                    <option class="pick2" value="90">Elbow, 90 degrees</option>
+                    <option class="pick2" value="45">Elbow, 45 degrees</option>
+
+                </select>
+            </div>
+            <div class="container">
+                <img class="diagram" src="run%20diagram.jpg" />
+            </div>
+            <div>
+                <label for="runNom">Nominal Size:</label>
+                <input type="number" id="runNom">
+
+                <label for="runOverall">Overall Length:</label>
+                <input type="number" id="runOverall">
+            </div>
+
+            <button id="calcRun">Calculate</button>
+            <span id="runAnswer"></span>
+        </div>
+    </section>
+
 <script src="logic.js"></script>
 </body>
 </html>

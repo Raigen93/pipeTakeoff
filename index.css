@@ -46,7 +46,11 @@ input {
     flex-direction: column;
 }
 
-#diagram {
+.diagram {
     height: auto;
     width: 100%;
+}
+
+#rise_runs {
+
 }
