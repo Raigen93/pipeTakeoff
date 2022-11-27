@@ -1,7 +1,10 @@
 //general page elements
 
-let cycle = document.getElementById('cycle');
+let displayElbow = document.getElementById('calcElbows');
+let displayRun = document.getElementById('calcRuns');
+let displayRiseRun = document.getElementById('calcRiseRuns');
 let riseRuns = document.getElementById('rise_runs');
+let runs = document.getElementById('runs');
 let degree;
 let height;
 
@@ -391,8 +394,6 @@ function calc45(nomSize) {
     }
     return response;
 }
-
-
 
 function calcRiseRun() {
     let nomSize = parseFloat(pipeSize.value);
@@ -1606,18 +1607,28 @@ function calcRuns() {
     document.getElementById('runAnswer').innerHTML = answer.toString();
 }
 
-function cyclePage() {
+function disElbow() {
+    elbowCalc.style.display = "block";
+    riseRuns.style.display = "none";
+    runs.style.display = "none";
+}
 
-    if(elbowCalc.style.display === 'none') {
-        elbowCalc.style.display = 'block';
-        riseRuns.style.display = 'none';
-    } else if(elbowCalc.style.display !== 'none') {
-        elbowCalc.style.display = 'none';
-        riseRuns.style.display = 'block';
-    }
+function disRiseRun() {
+    elbowCalc.style.display = "none";
+    riseRuns.style.display = "block";
+    runs.style.display = "none";
+}
+
+function disRun(){
+    elbowCalc.style.display = "none";
+    riseRuns.style.display = "none";
+    runs.style.display = "block";
 }
 
 calcRun.addEventListener('click', calcRuns);
-cycle.addEventListener('click', cyclePage)
 calcButton.addEventListener('click', calcRiseRun);
 submitButton.addEventListener('click', calcElbowOut);
+
+displayElbow.addEventListener('click', disElbow);
+displayRiseRun.addEventListener('click', disRiseRun);
+displayRun.addEventListener('click', disRun);

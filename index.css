@@ -10,6 +10,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 15px;
 }
 
 button {
@@ -25,14 +26,21 @@ input {
     margin: 5px auto 5px 10px;
 }
 
+
+
+.container {
+    margin: 15px auto;
+}
+
+.diagram {
+    height: auto;
+    width: 100%;
+}
+
 .inputs {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-}
-
-.container {
-    margin: 15px auto;
 }
 
 .group {
@@ -41,16 +49,29 @@ input {
     margin: 10px;
 }
 
+.response {
+    font-size: x-large;
+    font-weight: bold;
+    margin: 10px;
+}
+
 .rise_run {
     display: flex;
     flex-direction: column;
 }
 
-.diagram {
-    height: auto;
-    width: 100%;
+.selectButtons {
+    margin: 15px;
+}
+
+.selection {
+    margin: 10px;
 }
 
 #rise_runs {
+    display: none;
+}
 
+#runs {
+    display: none;
 }

@@ -9,8 +9,11 @@
 
     <p>Please note, this program currently functions only off of whole inches with decimals instead of fractions</p>
 
-    <button id="cycle">Change Calculator</button>
-
+    <div>
+    <button class="selectButtons" id="calcElbows"> Calculate Elbows </button>
+    <button class="selectButtons" id="calcRuns"> Calculate Runs </button>
+    <button class="selectButtons" id="calcRiseRuns" > Calculate Rise-Runs </button>
+    </div>
     <section id="elbows">
         <h2>Calculate take-offs for Elbows</h2>
 <div>
@@ -32,8 +35,7 @@
     <button id="submit">
         Calculate
     </button>
-    <span id="result">
-   </span>
+    <span class="response" id="result"></span>
 </div>
 </section>
 
@@ -63,11 +65,12 @@
         <button id="calcRiseRun">Calculate</button>
 
         <div>
-            <label for="overall_length">Overall Length</label>
-            <span id="overall_length"></span>
-
+            <label for="overall_length">Overall Length (Includes Elbows & Gaps for Welds)</label>
+            <span class="response" id="overall_length"></span>
+        </div>
+        <div>
             <label for="pieceLength">Length of Pipe</label>
-            <span id="pieceLength"></span>
+            <span class="response" id="pieceLength"></span>
         </div>
 
         <div class="container">
@@ -77,11 +80,11 @@
 </section>
 
 
-    <section>
+    <section id="runs">
         <h2>Calculate Runs</h2>
         <h4>Gaps for Weldments are assumed to be 1/8"</h4>
 
-        <div>
+        <div class="selection">
             <label for="fitClass">Fitting Class:</label>
             <select id="fitClass" name="fitClass">
                 <option class="fit_class" value="none"></option>
@@ -97,7 +100,7 @@
         </div>
 
         <div>
-            <div id="fitting1">
+            <div id="fitting1" class="selection">
             <label for="pick1">Pipe Fitting 1:</label>
             <select id="pick1" name="pick_1">
                 <option class="pick1" value="none">No fitting</option>
@@ -108,7 +111,7 @@
 
             </select>
             </div>
-            <div id="fitting2">
+            <div id="fitting2" class="selection">
                 <label for="pick2">Pipe Fitting 2:</label>
                 <select id="pick2" name="pick_2">
                     <option class="pick2" value="none">No fitting</option>
@@ -131,7 +134,7 @@
             </div>
 
             <button id="calcRun">Calculate</button>
-            <span id="runAnswer"></span>
+            <span class="response" id="runAnswer"></span>
         </div>
     </section>
 
