@@ -26,6 +26,7 @@
     <section id="elbows">
         <h2>Calculate take-offs for Elbows</h2>
         <div>
+            <div class="elbowContainer">
     <form>
     <div>
         <input type="radio" id="90" name="degrees" value="90">
@@ -36,17 +37,19 @@
         <input type="radio" id="45" name="degrees" value="45">
         <label for="45">45 degrees</label>
     </div>
-    </form>
-            <div>
+    </form></div>
+                <div>
                 <label for="nomSize">Nominal Size of Pipe</label>
                 <input type="number" id="nomSize">
+                <button id="submit">
+                    Calculate
+                </button>
+                <span class="response" id="result"></span>
             </div>
-   <div>
-       <button id="submit">
-           Calculate
-       </button>
-       <span class="response" id="result"></span>
-   </div>
+
+            <div>
+                <img src="elbowsDiagram.jpg" />
+            </div>
 
 </div>
 </section>

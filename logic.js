@@ -1608,7 +1608,7 @@ function calcRuns() {
 }
 
 function disElbow() {
-    elbowCalc.style.display = "block";
+    elbowCalc.style.display = "flex";
     riseRuns.style.display = "none";
     runs.style.display = "none";
 

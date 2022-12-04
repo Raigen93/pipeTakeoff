@@ -23,6 +23,7 @@ form {
     width: 150px;
     padding: 10px;
     margin: 5px;
+    height: 55px;
 }
 
 input {
@@ -41,6 +42,13 @@ section {
 .diagram {
     height: auto;
     width: 100%;
+}
+
+.elbowContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 
 .inputs {
@@ -73,6 +81,14 @@ section {
 
 .selection {
     margin: 10px;
+}
+
+#elbows {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
 }
 
 #rise_runs {
