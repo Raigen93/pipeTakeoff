@@ -333,6 +333,36 @@ let flanges = {
     }
 }
 
+let decimals = {
+    0.062: "1/16",
+    0.125: "1/8",
+    0.187: "3/16",
+    0.25: "1/4",
+    0.312: "5/16",
+    0.375: "3/8",
+    0.437: "7/16",
+    0.5: "1/2",
+    0.562: "9/16",
+    0.625: "5/8",
+    0.687: "11/16",
+    0.75: "3/4",
+    0.812: "13/16",
+    0.875: "7/8",
+    0.937: "15/16"
+}
+
+/*function convertToFraction(numToConvert) {
+    let numToCon = numToConvert.toString();
+    if(numToCon.includes(".")) {
+        let stringSplit = numToCon.split(".")
+        let decimal = stringSplit[1];
+        stringSplit[1] = decimals.{decimal};
+
+        console.log(stringSplit[1]);
+        return decimal;
+    }
+}*/
+
 function calcElbowOut() {
     let nomSize = parseFloat(elbowNom.value);
 
@@ -409,12 +439,14 @@ function calcRiseRun() {
     let a = Math.pow(height, 2);
     let c = a + a;
     let overall = Math.sqrt(c);
-    overall = parseFloat(overall.toFixed(2));
+
+    overall = (Math.round(overall * 16) / 16).toFixed(3);
 
     document.getElementById('overall_length').innerHTML = (overall).toString();
 
     let takeOut = calc45(nomSize) * 2;
     let pieceLength = overall - (takeOut + 0.25);
+    pieceLength = (Math.round(pieceLength * 16) / 16).toFixed(3);
 
     document.getElementById('pieceLength').innerHTML = pieceLength.toString();
 }
@@ -1597,12 +1629,14 @@ function calcRuns() {
 
 
     let answer = overall - fittingTOut;
+    answer = Math.round(answer * 16) /16;
     if(answer < 0) {
         throw new Error('Overall length to short to support the selected fittings')
     }
     if(fitClassSize.value === 'none') {
         throw new Error('fitting class must be specified')
     }
+
 
     document.getElementById('runAnswer').innerHTML = answer.toString();
 }
