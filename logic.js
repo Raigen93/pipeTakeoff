@@ -351,17 +351,20 @@ let decimals = {
     0.937: "15/16"
 }
 
-/*function convertToFraction(numToConvert) {
+function convertToFraction(numToConvert) {
     let numToCon = numToConvert.toString();
     if(numToCon.includes(".")) {
         let stringSplit = numToCon.split(".")
         let decimal = stringSplit[1];
-        stringSplit[1] = decimals.{decimal};
+        decimal = "0." + decimal;
+        let fraction = decimals[parseFloat(decimal)];
+        stringSplit[1] = fraction;
 
-        console.log(stringSplit[1]);
-        return decimal;
+        return stringSplit.join('  ');
+    } else {
+        return numToConvert.toString();
     }
-}*/
+}
 
 function calcElbowOut() {
     let nomSize = parseFloat(elbowNom.value);
@@ -373,14 +376,34 @@ function calcElbowOut() {
     }
 
     if(degree === 90) {
-        output.innerHTML = calcNinety(nomSize);
+        output.innerHTML = convertToFraction(calcNinety(nomSize));
     } else if(degree === 45) {
-        output.innerHTML = calc45(nomSize).toString();
+        output.innerHTML = convertToFraction(calc45(nomSize));
     }
 }
 
 function calcNinety(nomSize) {
-    return (nomSize * 1.5);
+    if(nomSize >= 4) {
+        return (nomSize * 1.5);
+    } else if(nomSize === 0.5) {
+        return 1.5;
+    } else if(nomSize === 0.75) {
+        return 1.125;
+    } else if(nomSize === 1) {
+        return 1.5;
+    } else if(nomSize === 1.25) {
+        return 1.875;
+    } else if(nomSize === 1.5) {
+        return 2.25;
+    } else if(nomSize === 2) {
+        return 3;
+    } else if(nomSize === 2.5) {
+        return 3.75;
+    } else if(nomSize === 3) {
+        return 4.5;
+    } else if(nomSize === 3.5) {
+        return 5.25;
+    }
 }
 
 function calc45(nomSize) {
@@ -442,13 +465,13 @@ function calcRiseRun() {
 
     overall = (Math.round(overall * 16) / 16).toFixed(3);
 
-    document.getElementById('overall_length').innerHTML = (overall).toString();
+    document.getElementById('overall_length').innerHTML = convertToFraction(overall);
 
     let takeOut = calc45(nomSize) * 2;
     let pieceLength = overall - (takeOut + 0.25);
     pieceLength = (Math.round(pieceLength * 16) / 16).toFixed(3);
 
-    document.getElementById('pieceLength').innerHTML = pieceLength.toString();
+    document.getElementById('pieceLength').innerHTML = convertToFraction(pieceLength);
 }
 
 function calcRuns() {
@@ -1638,7 +1661,7 @@ function calcRuns() {
     }
 
 
-    document.getElementById('runAnswer').innerHTML = answer.toString();
+    document.getElementById('runAnswer').innerHTML = convertToFraction(answer);
 }
 
 function disElbow() {
