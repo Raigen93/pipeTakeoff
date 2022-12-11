@@ -1695,10 +1695,10 @@ function calcRuns() {
     }
 
     let fittingTOut = fit1Takeout + fit2Takeout;
-    if(fit1.value != 'none') {
+    if(fit1.value === 'weldNeckRF' || fit1.value === 'weldNeckFF') {
         fittingTOut = fittingTOut + 0.125;
     }
-    if(fit2.value != 'none') {
+    if(fit2.value === 'weldNeckRF' || fit2.value === 'weldNeckFF') {
         fittingTOut = fittingTOut + 0.125;
     }
 
