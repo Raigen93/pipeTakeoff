@@ -351,6 +351,23 @@ let decimals = {
     0.937: "15/16"
 }
 
+function convertFromFraction(string) {
+    let toConvert = string.split(' ');
+
+    toConvert.forEach(el => {
+        if(el.includes('/')) {
+            let fracArr = el.split('/');
+            let num1 = parseFloat(fracArr[0]);
+            let num2 = parseFloat(fracArr[1]);
+            toConvert[toConvert.length -1] = num1 / num2;
+            toConvert[0] = parseFloat(toConvert[0]);
+            toConvert = toConvert[0] + toConvert[toConvert.length -1];
+        }
+    })
+    console.log(toConvert);
+    return toConvert.toString();
+}
+
 function convertToFraction(numToConvert) {
     let numToCon = numToConvert.toString();
     if(numToCon.includes(".")) {
@@ -367,7 +384,12 @@ function convertToFraction(numToConvert) {
 }
 
 function calcElbowOut() {
-    let nomSize = parseFloat(elbowNom.value);
+    let nomSize = elbowNom.value;
+    if(nomSize.includes('/')) {
+        nomSize = parseFloat(convertFromFraction(nomSize));
+    } else {
+        nomSize = parseFloat(nomSize);
+    }
 
     if(ninety.checked) {
         degree = 90;
@@ -449,9 +471,27 @@ function calc45(nomSize) {
 }
 
 function calcRiseRun() {
-    let nomSize = parseFloat(pipeSize.value);
-    let elev1 = parseFloat(el1.value);
-    let elev2 = parseFloat(el2.value);
+
+    let nomSize = pipeSize.value;
+    if(nomSize.includes('/')) {
+        nomSize = parseFloat(convertFromFraction(nomSize));
+    } else {
+        nomSize = parseFloat(nomSize);
+    }
+
+    let elev1 = el1.value;
+    if(elev1.includes('/')) {
+        elev1 = parseFloat(convertFromFraction(elev1));
+    } else {
+        elev1 = parseFloat(elev1);
+    }
+
+    let elev2 = el2.value;
+    if(elev2.includes('/')) {
+        elev2 = parseFloat(convertFromFraction(elev2));
+    } else {
+        elev2 = parseFloat(elev2);
+    }
 
     if(elev2 > elev1) {
         height = elev2 - elev1;
@@ -476,9 +516,21 @@ function calcRiseRun() {
 
 function calcRuns() {
     let fitClassSize = parseFloat(fitClass.value);
-    let nomSize = parseFloat(runNom.value);
-    let overall = parseFloat(runOverall.value);
-    
+
+    let nomSize = runNom.value;
+    if(nomSize.includes('/')) {
+        nomSize = parseFloat(convertFromFraction(nomSize));
+    } else {
+        nomSize = parseFloat(nomSize);
+    }
+
+    let overall = runOverall.value;
+    if(overall.includes('/')) {
+        overall = parseFloat(convertFromFraction(overall));
+    } else {
+        overall = parseFloat(overall);
+    }
+
     let fit1Takeout;
     let fit2Takeout;
 

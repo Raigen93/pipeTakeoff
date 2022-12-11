@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <p>Please note, this program currently functions only off of whole inches with decimals instead of fractions</p>
+    <p>Please note, this program currently functions off of inches, now supporting use of decimals or fractions</p>
 
     <div class="selectButtons">
         <div class="sButton">
@@ -40,7 +40,7 @@
     </form></div>
                 <div>
                 <label for="nomSize">Nominal Size of Pipe</label>
-                <input type="number" id="nomSize">
+                <input type="text" id="nomSize">
                 <button id="submit">
                     Calculate
                 </button>
@@ -62,17 +62,17 @@
         <div class="inputs">
             <span class="group">
                 <label for="pipeSize">Nominal Size of Pipe</label>
-                <input type="number" id="pipeSize">
+                <input type="text" id="pipeSize">
             </span>
 
             <span class="group">
                 <label for="elevation_1">Upper Elevation</label>
-                <input type="number" id="elevation_1">
+                <input type="text" id="elevation_1">
             </span>
 
             <span class="group">
                 <label for="elevation_2">Lower Elevation</label>
-                <input type="number" id="elevation_2">
+                <input type="text" id="elevation_2">
             </span>
 
         </div>
@@ -142,15 +142,15 @@
             </div>
             <div>
                 <label for="runNom">Nominal Size:</label>
-                <input type="number" id="runNom">
+                <input type="text" id="runNom">
             </div>
             <div>
                 <label for="runOverall">Overall Length:</label>
-                <input type="number" id="runOverall">
+                <input type="text" id="runOverall">
             </div>
 
             <button id="calcRun">Calculate</button>
-            <span class="response" id="runAnswer"></span>
+            <span class="text" id="runAnswer"></span>
         </div>
     </section>
 
