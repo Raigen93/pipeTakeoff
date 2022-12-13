@@ -334,21 +334,21 @@ let flanges = {
 }
 
 let decimals = {
-    0.062: "1/16",
+    0.0625: "1/16",
     0.125: "1/8",
-    0.187: "3/16",
+    0.1875: "3/16",
     0.25: "1/4",
-    0.312: "5/16",
+    0.3125: "5/16",
     0.375: "3/8",
-    0.437: "7/16",
+    0.4375: "7/16",
     0.5: "1/2",
-    0.562: "9/16",
+    0.5625: "9/16",
     0.625: "5/8",
-    0.687: "11/16",
+    0.6875: "11/16",
     0.75: "3/4",
-    0.812: "13/16",
+    0.8125: "13/16",
     0.875: "7/8",
-    0.937: "15/16"
+    0.9375: "15/16",
 }
 
 function convertFromFraction(string) {
@@ -369,13 +369,75 @@ function convertFromFraction(string) {
 }
 
 function convertToFraction(numToConvert) {
-    let numToCon = numToConvert.toString();
+    let numToCon = numToConvert.toFixed(3);
     if(numToCon.includes(".")) {
         let stringSplit = numToCon.split(".")
         let decimal = stringSplit[1];
         decimal = "0." + decimal;
-        let fraction = decimals[parseFloat(decimal)];
-        stringSplit[1] = fraction;
+        parseFloat(decimal);
+
+        if(decimal < 0.03125) {
+            decimal = 0;
+        }
+        if(decimal > 0.03125 && decimal < 0.09375) {
+            //one sixteenth
+            decimal = 0.0625;
+        } else if(decimal > 0.09375 && decimal < 0.15625) {
+            //one eighth
+            decimal = 0.125;
+        } else if(decimal > 0.15625 && decimal < 0.21875) {
+            // three sixteenths
+            decimal = 0.1875;
+        } else if(decimal > 0.21875 && decimal < 0.28125) {
+            //one quarter
+            decimal = 0.25;
+        } else if(decimal > 0.28125 && decimal < 0.37345) {
+            //five sixteenths
+            decimal = 0.3125;
+        } else if(decimal > 0.37345 && decimal < 0.40625) {
+            //three eighths
+            decimal = 0.375;
+        } else if(decimal > 0.40625 && decimal < 0.46875) {
+            //seven sixteenths
+            decimal = 0.4375;
+        } else if(decimal > 0.46875 && decimal < 0.53125) {
+            //one half
+            decimal = 0.5;
+        } else if(decimal > 0.53125 && decimal < 0.59375) {
+            //nine sixteenths
+            decimal = 0.5625;
+        } else if(decimal > 0.59375 && decimal < 0.65625) {
+            //five eighths
+            decimal = 0.625;
+        } else if(decimal > 0.65625 && decimal < 0.71875) {
+            //eleven sixteenths
+            decimal = 0.6875;
+        } else if(decimal > 0.71875 && decimal < 0.78125) {
+            //three quarters
+            decimal = 0.75;
+        } else if(decimal > 0.71875 && decimal < 0.84375) {
+            //thirteen sixteenths
+            decimal = 0.8125;
+        } else if(decimal > 0.84375 && decimal < 0.90625) {
+            //seven eighths
+            decimal = 0.875;
+        } else if(decimal > 0.90625 && decimal < 0.96875) {
+            //fifteen sixteenths
+            decimal = 0.9375;
+        } else if(decimal > 0.96875) {
+            decimal = 1;
+        }
+
+        if(decimal !== 0 || decimal !== 1) {
+            let fraction = decimals[decimal];
+            stringSplit[1] = fraction;
+        } else if(decimal === 0) {
+            stringSplit[1] = '';
+        } else if(decimal === 1) {
+            stringSplit[1] = '';
+            stringSplit[0] = (parseFloat(stringSplit[0]) + 1).toString();
+        }
+
 
         return stringSplit.join('  ');
     } else {
@@ -1694,6 +1756,8 @@ function calcRuns() {
         }
     }
 
+
+    console.log(fit1Takeout, fit2Takeout);
     let fittingTOut = fit1Takeout + fit2Takeout;
     if(fit1.value === 'weldNeckRF' || fit1.value === 'weldNeckFF') {
         fittingTOut = fittingTOut + 0.125;
@@ -1702,9 +1766,12 @@ function calcRuns() {
         fittingTOut = fittingTOut + 0.125;
     }
 
+    console.log(fittingTOut);
 
     let answer = overall - fittingTOut;
+
     answer = Math.round(answer * 16) /16;
+
     if(answer < 0) {
         throw new Error('Overall length to short to support the selected fittings')
     }
