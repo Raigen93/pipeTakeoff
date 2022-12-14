@@ -565,13 +565,13 @@ function calcRiseRun() {
     let c = a + a;
     let overall = Math.sqrt(c);
 
-    overall = (Math.round(overall * 16) / 16).toFixed(3);
+    overall = parseFloat((Math.round(overall * 16) / 16).toFixed(3));
 
     document.getElementById('overall_length').innerHTML = convertToFraction(overall);
 
     let takeOut = calc45(nomSize) * 2;
     let pieceLength = overall - (takeOut + 0.25);
-    pieceLength = (Math.round(pieceLength * 16) / 16).toFixed(3);
+    pieceLength = parseFloat((Math.round(pieceLength * 16) / 16).toFixed(3));
 
     document.getElementById('pieceLength').innerHTML = convertToFraction(pieceLength);
 }
